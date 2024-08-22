@@ -378,7 +378,9 @@ def download(
             pbar.close()
         if tmp_file:
             f.close()
-            shutil.move(tmp_file, output)
+            filename_from_url = os.path.join(output,filename_from_url)
+            shutil.move(tmp_file, filename_from_url)
+            
         if output_is_path and last_modified_time:
             mtime = last_modified_time.timestamp()
             os.utime(output, (mtime, mtime))
